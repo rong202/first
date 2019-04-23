@@ -1,23 +1,59 @@
 package com.youzan.ad.index.adunit;
 
 import com.youzan.ad.index.IndexAware;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Component;
 
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Created by baimugudu on 2019/4/2
- * 推广单元：正向索引
+ * Created by Qinyi.
  */
-
+@Slf4j
 @Component
-public class AdUnitIndex implements IndexAware<Long,AdUnitObject> {
+public class AdUnitIndex implements IndexAware<Long, AdUnitObject> {
 
+   /* private static Map<Long, AdUnitObject> objectMap;*/
     private static Map<Long,AdUnitObject> objectMap;
-
     static {
         objectMap = new ConcurrentHashMap<>();
+    }
+
+    public Set<Long> match(Integer positionType) {
+
+      /*  Set<Long> adUnitIds = new HashSet<>();*/
+        Set<Long> adUnitIds = new HashSet<>();
+
+        objectMap.forEach((k, v) -> {
+            if (AdUnitObject.isAdSlotTypeOK(positionType,
+                    v.getPositionType())) {
+                adUnitIds.add(k);
+            }
+        });
+
+        return adUnitIds;
+    }
+
+    public List<AdUnitObject> fetch(Collection<Long> adUnitIds) {
+
+        if (CollectionUtils.isEmpty(adUnitIds)) {
+            return Collections.emptyList();
+        }
+
+        List<AdUnitObject> result = new ArrayList<>();
+
+        adUnitIds.forEach(u -> {
+            AdUnitObject object = get(u);
+            if (object == null) {
+                log.error("AdUnitObject not found: {}", u);
+                return;
+            }
+            result.add(object);
+        });
+
+        return result;
     }
 
     @Override
@@ -27,23 +63,32 @@ public class AdUnitIndex implements IndexAware<Long,AdUnitObject> {
 
     @Override
     public void add(Long key, AdUnitObject value) {
-        objectMap.put(key,value);
+
+        log.info("before add: {}", objectMap);
+        objectMap.put(key, value);
+        log.info("after add: {}", objectMap);
     }
 
     @Override
     public void update(Long key, AdUnitObject value) {
-        AdUnitObject adUnitObject =  objectMap.get(key);
-        if(null==adUnitObject){
-            objectMap.put(key,value);
-        }else{
-            adUnitObject.update(value);
+
+        log.info("before update: {}", objectMap);
+
+        AdUnitObject oldObject = objectMap.get(key);
+        if (null == oldObject) {
+            objectMap.put(key, value);
+        } else {
+            oldObject.update(value);
         }
 
-
+        log.info("after update: {}", objectMap);
     }
 
     @Override
     public void delete(Long key, AdUnitObject value) {
+
+        log.info("before delete: {}", objectMap);
         objectMap.remove(key);
+        log.info("after delete: {}", objectMap);
     }
 }

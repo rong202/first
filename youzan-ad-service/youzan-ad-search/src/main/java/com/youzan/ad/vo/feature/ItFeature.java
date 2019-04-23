@@ -1,4 +1,4 @@
-package com.youzan.ad.client.vo;
+package com.youzan.ad.vo.feature;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,8 +12,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdPlanGetRequest {
+public class ItFeature {
 
-    private Long userId;
-    private List<Long> ids;
+    private List<String> its;
 }

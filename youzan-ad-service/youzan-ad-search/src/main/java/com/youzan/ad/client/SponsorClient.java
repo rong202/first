@@ -1,7 +1,7 @@
 package com.youzan.ad.client;
 
+import com.youzan.ad.client.vo.AdPlan;
 import com.youzan.ad.client.vo.AdPlanGetRequest;
-import com.youzan.ad.client.vo.AdPlanResponse;
 import com.youzan.ad.vo.CommonResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,19 +11,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 
 /**
- * Created by baimugudu on 2019/4/1
+ * Created by Qinyi.
+ * 声明式微服务调用
  */
-//,fallback=SponeorClientHystrix.class
-@FeignClient(value = "AD-SPONSOR",fallback=SponeorClientHystrix.class)
-public interface SponeorClient {
+@FeignClient(value = "eureka-client-ad-sponsor",
+        fallback = SponsorClientHystrix.class)
+public interface SponsorClient {
 
-
-    @RequestMapping(value = "/ad-sponsor/plan/getPlan",method = RequestMethod.POST)
-    CommonResponse<List<AdPlanResponse>> getPlan(
+    @RequestMapping(value = "/ad-sponsor/get/adPlan",
+            method = RequestMethod.POST)
+    CommonResponse<List<AdPlan>> getAdPlans(
             @RequestBody AdPlanGetRequest request);
-
-
-
-
-
 }

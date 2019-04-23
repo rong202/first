@@ -103,6 +103,7 @@ public class DumpDataService {
                         new AdPlanTable(
                                 i.getId(),
                                 i.getUserId(),
+
                                 i.getPlanStatus(),
                                 i.getStartTime(),
                                 i.getEndTime()
@@ -162,11 +163,11 @@ public class DumpDataService {
 
     private void dumpCreativeTable(String fileName){
         List<AdCreative> creativeList = adCreativeRepository.findAll();
-        List<AdCreativeTbale> adCreativeTbales = new ArrayList<>();
+        List<AdCreativeTable> adCreativeTbales = new ArrayList<>();
 
         creativeList.forEach(
                 c->adCreativeTbales.add(
-                        new AdCreativeTbale(
+                        new AdCreativeTable(
                                 c.getId(),
                                 c.getName(),
                                 c.getType(),
@@ -180,7 +181,7 @@ public class DumpDataService {
 
         Path path = Paths.get(fileName);
         try(BufferedWriter writer = Files.newBufferedWriter(path)){
-            for(AdCreativeTbale adCreativeTbale:adCreativeTbales){
+            for(AdCreativeTable adCreativeTbale:adCreativeTbales){
                 writer.write(JSON.toJSONString(adCreativeTbale));
                 writer.newLine();
             }
@@ -199,10 +200,10 @@ public class DumpDataService {
     private void dumpCreativeUnitTable(String fileName){
 
         List<AdCreativeUnit> adCreativeUnits = adCreativeUnitRepository.findAll();
-        List<AdCreativeUnitTbale> adCreativeUnitTbales = new ArrayList<>();
+        List<AdCreativeUnitTable> adCreativeUnitTbales = new ArrayList<>();
         adCreativeUnits.forEach(
                 ad->adCreativeUnitTbales.add(
-                        new AdCreativeUnitTbale(
+                        new AdCreativeUnitTable(
                                 ad.getUnitId(),
                                 ad.getCreativeId()
                         )
@@ -213,7 +214,7 @@ public class DumpDataService {
        Path path =  Paths.get(fileName);
 
        try(BufferedWriter writer = Files.newBufferedWriter(path)){
-           for(AdCreativeUnitTbale adCreativeUnitTbale:adCreativeUnitTbales){
+           for(AdCreativeUnitTable adCreativeUnitTbale:adCreativeUnitTbales){
                writer.write(JSON.toJSONString(adCreativeUnitTbale));
                writer.newLine();
            }

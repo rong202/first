@@ -26,7 +26,7 @@ public class CreativeObject {
     private Integer width;
 
     private Integer auditStatus;
-
+    private String adUrl;
 
     public void update(CreativeObject newObject){
 

@@ -1,10 +1,8 @@
-package com.youzan.ad.client.vo;
+package com.youzan.ad.vo.media;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 /**
  * Created by Qinyi.
@@ -12,8 +10,11 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdPlanGetRequest {
+public class Geo {
 
-    private Long userId;
-    private List<Long> ids;
+    private Float latitude;
+    private Float longitude;
+
+    private String city;
+    private String province;
 }

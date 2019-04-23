@@ -1,8 +1,8 @@
 package com.youzan.ad.sender.kafka;
 
 import com.alibaba.fastjson.JSON;
-import com.imooc.ad.mysql.dto.MySqlRowData;
-import com.imooc.ad.sender.ISender;
+import com.youzan.ad.mysql.dto.MySqlRowData;
+import com.youzan.ad.sender.ISender;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

@@ -52,7 +52,7 @@ public class IndexFileLoader {
         );
 
         adCretiveString.forEach(
-                adCretive->AdLevelDataHandler.handlevel2(
+                adCretive->AdLevelDataHandler.handleLevel2(
                         JSON.parseObject(adCretive, AdCreativeTable.class),
                         OpType.ADD
                 )
@@ -67,7 +67,7 @@ public class IndexFileLoader {
         );
 
         adUnitString.forEach(
-                adUnit->AdLevelDataHandler.handlelevel3(
+                adUnit->AdLevelDataHandler.handleLevel3(
                         JSON.parseObject(adUnit, AdUnitTable.class),
                         OpType.ADD
                 )
@@ -82,7 +82,7 @@ public class IndexFileLoader {
         );
 
         adCreativeUnitString.forEach(
-                adCreativeUnit->AdLevelDataHandler.handlevel3(
+                adCreativeUnit->AdLevelDataHandler.handleLevel3(
                         JSON.parseObject(adCreativeUnit, AdCreativeUnitTable.class),
                         OpType.ADD
                 )
@@ -112,7 +112,7 @@ public class IndexFileLoader {
                 )
         );
         adUnitKeyWordString.forEach(
-                adUnitKeyWord->AdLevelDataHandler.handllevel4(
+                adUnitKeyWord->AdLevelDataHandler.handleLevel4(
                         JSON.parseObject(adUnitKeyWord,AdUnitKeywordTable.class),
                         OpType.ADD
                 )
@@ -127,7 +127,7 @@ public class IndexFileLoader {
         );
 
         adUnitItString.forEach(
-                adUnitIt->AdLevelDataHandler.handlLevel4(
+                adUnitIt->AdLevelDataHandler.handleLevel4(
                         JSON.parseObject(adUnitIt,AdUnitItTable.class),
                         OpType.ADD
                 )

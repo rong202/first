@@ -1,6 +1,7 @@
 package com.youzan.ad.index.keyword;
 
 import com.youzan.ad.index.IndexAware;
+import com.youzan.ad.utils.CommonUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
