@@ -1,7 +1,8 @@
 package com.youzan.ad;
 
-import com.imooc.ad.search.vo.SearchRequest;
-import com.imooc.ad.search.vo.SearchResponse;
+
+import com.youzan.ad.vo.SearchRequest;
+import com.youzan.ad.vo.SearchResponse;
 
 /**
  * Created by Qinyi.

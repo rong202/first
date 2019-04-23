@@ -1,8 +1,9 @@
 package com.youzan.ad.client;
 
-import com.imooc.ad.client.vo.AdPlan;
-import com.imooc.ad.client.vo.AdPlanGetRequest;
-import com.imooc.ad.vo.CommonResponse;
+
+import com.youzan.ad.client.vo.AdPlan;
+import com.youzan.ad.client.vo.AdPlanGetRequest;
+import com.youzan.ad.vo.CommonResponse;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

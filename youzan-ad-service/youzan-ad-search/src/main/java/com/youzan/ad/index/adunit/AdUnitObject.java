@@ -13,13 +13,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AdUnitObject {
 
+    private Long planId;
     private Long unitId;
     private Integer unitStatus;
     private Integer positionType;
-    private Long planId;
 
     private AdPlanObject adPlanObject;
 
+    public AdUnitObject(Long planId,Long unitId,int unitStatus,int positionType){
+        this.planId = planId;
+        this.unitId = unitId;
+        this.unitStatus = unitStatus;
+        this.positionType = positionType;
+    }
     void update(AdUnitObject newObject) {
 
         if (null != newObject.getUnitId()) {

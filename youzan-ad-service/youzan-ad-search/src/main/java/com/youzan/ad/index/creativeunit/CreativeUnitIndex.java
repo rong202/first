@@ -1,12 +1,12 @@
 package com.youzan.ad.index.creativeunit;
 
 import com.youzan.ad.index.IndexAware;
+import com.youzan.ad.index.adunit.AdUnitObject;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Component;
 
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentSkipListSet;
 
@@ -26,12 +26,12 @@ public class CreativeUnitIndex implements IndexAware<String,CreativeUnitObject> 
     private static Map<Long, Set<Long>> creativeUnitMap;
 
     // <unitId,adId set>
-    private static Map<Long, Set<Long>> unitCraetiveMap;
+    private static Map<Long, Set<Long>> unitCreativeMap;
 
     static{
         objectMap = new ConcurrentHashMap<>();
         creativeUnitMap = new ConcurrentHashMap<>();
-        unitCraetiveMap = new ConcurrentHashMap<>();
+        unitCreativeMap = new ConcurrentHashMap<>();
     }
 
 
@@ -53,10 +53,10 @@ public class CreativeUnitIndex implements IndexAware<String,CreativeUnitObject> 
 
         unitSet.add(value.getUnitId());
 
-        Set adIdSet = unitCraetiveMap.get(value.getUnitId());
+        Set adIdSet = unitCreativeMap.get(value.getUnitId());
         if(CollectionUtils.isEmpty(adIdSet)){
             adIdSet = new ConcurrentSkipListSet<>();
-            unitCraetiveMap.put(value.getUnitId(),adIdSet);
+            unitCreativeMap.put(value.getUnitId(),adIdSet);
         }
 
         adIdSet.add(value.getAdId());
@@ -81,12 +81,31 @@ public class CreativeUnitIndex implements IndexAware<String,CreativeUnitObject> 
             unitSet.remove(value.getUnitId());
         }
 
-        Set<Long> adIdSet = unitCraetiveMap.get(value.getUnitId());
+        Set<Long> adIdSet = unitCreativeMap.get(value.getUnitId());
         if(CollectionUtils.isNotEmpty(adIdSet)){
             adIdSet.remove(value.getAdId());
         }
 
 
 
+    }
+
+    public List<Long> selectAds(List<AdUnitObject> unitObjects) {
+
+        if (CollectionUtils.isEmpty(unitObjects)) {
+            return Collections.emptyList();
+        }
+
+        List<Long> result = new ArrayList<>();
+
+        for (AdUnitObject unitObject : unitObjects) {
+
+            Set<Long> adIds = unitCreativeMap.get(unitObject.getUnitId());
+            if (CollectionUtils.isNotEmpty(adIds)) {
+                result.addAll(adIds);
+            }
+        }
+
+        return result;
     }
 }

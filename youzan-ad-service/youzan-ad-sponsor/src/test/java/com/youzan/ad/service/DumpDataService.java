@@ -101,9 +101,9 @@ public class DumpDataService {
         adPlan.forEach(
                 i->adPlanTables.add(
                         new AdPlanTable(
-                                i.getId(),
+                              i.getId(),
+                                i.getPlanId(),
                                 i.getUserId(),
-
                                 i.getPlanStatus(),
                                 i.getStartTime(),
                                 i.getEndTime()
@@ -138,10 +138,10 @@ public class DumpDataService {
        adUnits.forEach(
                 i-> adUnitTables.add(
                         new AdUnitTable(
+                                i.getPlanId(),
                                 i.getId(),
                                 i.getUnitStatus(),
-                                i.getPositionType(),
-                                i.getPlanId()
+                                i.getPositionType()
                         )
                 )
         );
@@ -168,13 +168,14 @@ public class DumpDataService {
         creativeList.forEach(
                 c->adCreativeTbales.add(
                         new AdCreativeTable(
-                                c.getId(),
+                              c.getId(),
                                 c.getName(),
                                 c.getType(),
                                 c.getMaterialType(),
                                 c.getHeight(),
                                 c.getWidth(),
-                                c.getAuditStatus()
+                                c.getAuditStatus(),
+                                c.getUrl()
                         )
                 )
         );

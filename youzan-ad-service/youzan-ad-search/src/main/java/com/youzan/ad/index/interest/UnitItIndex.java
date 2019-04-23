@@ -3,8 +3,10 @@ package com.youzan.ad.index.interest;
 import com.youzan.ad.index.IndexAware;
 import com.youzan.ad.utils.CommonUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -74,5 +76,18 @@ public class UnitItIndex implements IndexAware<String, Set<Long>> {
                         ConcurrentSkipListSet::new
                 ).remove(key)
         );
+    }
+
+    public boolean match(Long unitId, List<String> itTags) {
+
+        if (unitItTagMap.containsKey(unitId)
+                && CollectionUtils.isNotEmpty(unitItTagMap.get(unitId))) {
+
+            Set<String> unitKeywords = unitItTagMap.get(unitId);
+
+            return CollectionUtils.isSubCollection(itTags, unitKeywords);
+        }
+
+        return false;
     }
 }

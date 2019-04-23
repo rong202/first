@@ -3,10 +3,12 @@ package com.youzan.ad.index.keyword;
 import com.youzan.ad.index.IndexAware;
 import com.youzan.ad.utils.CommonUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -63,20 +65,6 @@ public class UnitKeyWordIndex implements IndexAware<String, Set<Long>> {
         }
 
 
-//      Set<Long> set =  keyWordUnitMap.get(key);
-//      if(null==set){
-//           set =  new ConcurrentSkipListSet<>();
-//      }
-//      set.addAll(value);
-//
-//      for(Long unitId:value){
-//         Set<String> setStr =  unitKeyWordMap.get(unitId);
-//         if(null==setStr){
-//             setStr =  new ConcurrentSkipListSet<>();
-//         }
-//          setStr.add(key);
-//      }
-
     }
 
     @Override
@@ -104,5 +92,17 @@ public class UnitKeyWordIndex implements IndexAware<String, Set<Long>> {
         }
 
 
+    }
+    public boolean match(Long unitId, List<String> keywords) {
+
+        if (unitKeyWordMap.containsKey(unitId)
+                && CollectionUtils.isNotEmpty(unitKeyWordMap.get(unitId))) {
+
+            Set<String> unitKeywords = unitKeyWordMap.get(unitId);
+
+            return CollectionUtils.isSubCollection(keywords, unitKeywords);
+        }
+
+        return false;
     }
 }

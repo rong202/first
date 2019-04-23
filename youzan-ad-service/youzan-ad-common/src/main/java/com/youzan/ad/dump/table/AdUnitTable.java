@@ -12,9 +12,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AdUnitTable {
 
+    private Long planId;
     private Long unitId;
     private Integer unitStatus;
     private Integer positionType;
 
-    private Long planId;
 }

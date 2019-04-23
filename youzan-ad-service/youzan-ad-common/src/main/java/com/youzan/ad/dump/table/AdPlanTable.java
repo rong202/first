@@ -1,8 +1,8 @@
 package com.youzan.ad.dump.table;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 import java.util.Date;
 
@@ -11,15 +11,13 @@ import java.util.Date;
  */
 @Data
 @NoArgsConstructor
-
-
 @AllArgsConstructor
 public class AdPlanTable {
 
-    private Long id;
+    public Long id;
     public Long planId;
-    private Long userId;
-    private Integer planStatus;
-    private Date startDate;
-    private Date endDate;
+    public Long userId;
+    public Integer planStatus;
+    public Date startDate;
+    public Date endDate;
 }

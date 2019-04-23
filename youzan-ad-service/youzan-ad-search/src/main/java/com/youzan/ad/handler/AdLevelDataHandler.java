@@ -58,7 +58,8 @@ public class AdLevelDataHandler {
             creativeTable.getMaterialType(),
             creativeTable.getHeight(),
             creativeTable.getWidth(),
-            creativeTable.getAuditStatus()
+            creativeTable.getAuditStatus(),
+                creativeTable.getAdUrl()
 
         );
         handleBinlogEvent(
@@ -81,10 +82,10 @@ public class AdLevelDataHandler {
         }
 
         AdUnitObject unitObject = new AdUnitObject(
-             unitTable.getUnitId(),
+                unitTable.getPlanId(),
+                unitTable.getUnitId(),
                 unitTable.getUnitStatus(),
-                unitTable.getPositionType(),
-                unitTable.getPlanId()
+                unitTable.getPositionType()
         );
 
         handleBinlogEvent(
