@@ -72,9 +72,8 @@ public class AdPlanServiceImpl implements IAdPlanService {
         return new AdPlanResponse(newPlan.getId(),
                 newPlan.getPlanName());
     }
-
-    @Override
-   @Transactional
+      @Override
+      @Transactional
     public AdPlanResponse updatePlan(AdPlanRequest planRequest) throws AdException {
 
         //验证参数是否合法

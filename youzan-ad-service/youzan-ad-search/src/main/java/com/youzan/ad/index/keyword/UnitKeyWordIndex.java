@@ -43,7 +43,7 @@ public class UnitKeyWordIndex implements IndexAware<String, Set<Long>> {
         Set<Long> set = keyWordUnitMap.get(key);
         if (null == set) {
             return Collections.emptySet();
-        }
+       }
 
         return set;
     }

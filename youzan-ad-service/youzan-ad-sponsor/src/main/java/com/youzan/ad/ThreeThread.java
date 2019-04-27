@@ -1,8 +1,5 @@
 package com.youzan.ad;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.FutureTask;
-
 /**
  * @author Fei
  * @data 2019-04-10 下午 03:33
@@ -11,7 +8,7 @@ import java.util.concurrent.FutureTask;
 public class ThreeThread {
     public static void main(String[] args) {
         //创建Callable对象
-        ThreeThread rt = new ThreeThread();
+     /*   ThreeThread rt = new ThreeThread();
         //先使用Lambda表达式创建Callable<integer>对象
         FutureTask<Integer> task = new FutureTask<Integer>((Callable<Integer>)()->{
             int i = 0;
@@ -33,6 +30,7 @@ public class ThreeThread {
       }
       catch (Exception e){
           e.printStackTrace();
-      }
+      }*/
+     new Thread(() -> System.out.println("mingming"));
     }
 }

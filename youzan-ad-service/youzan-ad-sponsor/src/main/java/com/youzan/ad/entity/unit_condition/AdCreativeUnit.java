@@ -19,7 +19,7 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "ad_creative_unit")
+@Table(name = "creative_unit")
 public class AdCreativeUnit {
 
     @Id

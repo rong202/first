@@ -11,6 +11,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by baimugudu on 2019/4/3
+ * ApplicationContextAware 应用程序上下文,初始化spring 的各个组件
+ * Priorityoeder 排序 组件优先级
  */
 @Component
 public class DataTable implements ApplicationContextAware, PriorityOrdered {

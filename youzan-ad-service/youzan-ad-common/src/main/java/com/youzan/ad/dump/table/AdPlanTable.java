@@ -15,7 +15,6 @@ import java.util.Date;
 public class AdPlanTable {
 
     public Long id;
-    public Long planId;
     public Long userId;
     public Integer planStatus;
     public Date startDate;

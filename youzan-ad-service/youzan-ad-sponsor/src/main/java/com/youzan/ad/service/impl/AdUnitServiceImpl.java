@@ -131,13 +131,13 @@ public class AdUnitServiceImpl implements IAdUnitService {
     public AdUnitItResponse createUnitIt(AdUnitItRequest unitItRequest) {
 
         List<Long> unitIds = unitItRequest.getUnitIts().stream().map(
-                AdUnitItRequest.UnitId::getUnitId
+                AdUnitItRequest.unitIts::getUnitId
         ).collect(Collectors.toList());
 
         //然后拿着 unitIds遍历，AdUnit   只要有一个不存在，则抛异常  参数不合法
 
-        List<AdUnitIt> list = Collections.emptyList();
-        List<Long> ids = Collections.emptyList();
+        List<AdUnitIt> list = new ArrayList<>();
+        List<Long> ids = new ArrayList<>();
         if (!CollectionUtils.isEmpty(unitItRequest.getUnitIts())) {
             unitItRequest.getUnitIts().forEach(
                     i -> list.add(

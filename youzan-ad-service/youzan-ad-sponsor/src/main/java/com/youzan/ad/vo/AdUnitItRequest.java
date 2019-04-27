@@ -16,13 +16,13 @@ import java.util.List;
 @NoArgsConstructor
 public class AdUnitItRequest {
 
-    private List<UnitId> unitIts;
+    private List<unitIts> unitIts;
 
 
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
-    public static  class UnitId{
+    public static class unitIts{
 
 
         private Long unitId;

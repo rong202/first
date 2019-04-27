@@ -56,6 +56,7 @@ public class SearchImpl implements ISearch {
 
         // 构造响应对象
         SearchResponse response = new SearchResponse();
+        //String 广告位编码
         Map<String, List<SearchResponse.Creative>> adSlot2Ads =
                 response.getAdSlot2Ads();
 

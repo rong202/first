@@ -100,7 +100,7 @@ public class UnitDistrictIndex implements IndexAware<String, Set<Long>> {
                                     d.getProvince(), d.getCity()
                             )
                     ).collect(Collectors.toList());
-
+            //前一个是否是后一个的子集
             return CollectionUtils.isSubCollection(targetDistricts, unitDistricts);
         }
 

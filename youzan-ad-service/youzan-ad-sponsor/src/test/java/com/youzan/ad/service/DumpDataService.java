@@ -102,7 +102,7 @@ public class DumpDataService {
                 i->adPlanTables.add(
                         new AdPlanTable(
                               i.getId(),
-                                i.getPlanId(),
+
                                 i.getUserId(),
                                 i.getPlanStatus(),
                                 i.getStartTime(),
